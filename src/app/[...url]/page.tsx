@@ -15,6 +15,8 @@ function reconstructUrl({ url }: { url: string[] }) {
     return decodedComponents.join("/")
 }
 
+export const maxDuration = 60
+
 export default async function Page(props: PageProps) {
     const sessionCookie = (await cookies()).get("sessionId")?.value
     const reconstructedUrl = reconstructUrl({ url: (await props.params).url as string[] })
