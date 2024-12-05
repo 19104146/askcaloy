@@ -1,11 +1,10 @@
+import getConfig from "next/config"
 import Link from "next/link"
 
 export default function Page() {
-    const baseUrl =
-        process.env.NODE_ENV === "production"
-            ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-            : "http://localhost:3000"
+    const { publicRuntimeConfig } = getConfig()
 
+    const baseUrl = publicRuntimeConfig.baseUrl
     const exampleUrl = "https://en.wikipedia.org/wiki/Society_of_the_Divine_Word"
 
     return (
