@@ -21,7 +21,7 @@ export default async function Page(props: PageProps) {
     const sessionCookie = (await cookies()).get("sessionId")?.value
     const reconstructedUrl = reconstructUrl({ url: (await props.params).url as string[] })
 
-    const sessionId = `${reconstructUrl}--${sessionCookie}`.replace(/\//g, "")
+    const sessionId = `${reconstructedUrl}--${sessionCookie}`.replace(/\//g, "")
 
     const isIndexed = await redis.sismember("indexed-urls", reconstructedUrl)
 
